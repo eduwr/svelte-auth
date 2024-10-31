@@ -1,8 +1,16 @@
-<script>
+<script lang="ts">
 	import Button from '$lib/components/button/StyledButton.svelte';
+
+	import { type PageServerData } from './$types';
+	let { data }: { data: PageServerData } = $props();
 </script>
 
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
 
-<Button />
+<ul>
+	{#each data.countries as country}
+		<li>{country.name}</li>
+	{/each}
+</ul>
+<Button label="test" />
